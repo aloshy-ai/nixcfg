@@ -1,6 +1,6 @@
 {
   "name": "Devbox Remote Container",
-  "image": "ubuntu:latest",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
   "workspaceFolder": "/workspace",
   "customizations": {
@@ -20,11 +20,9 @@
   "features": {
     "ghcr.io/ChristopherMacGown/devcontainer-features/direnv:1": {},
     "ghcr.io/schlich/devcontainer-features/starship:0": {},
-    "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/nix:1": {
       "extraNixConfig": "experimental-features = nix-command flakes",
       "packages": [
-        "nano",
         "devbox"
       ]
     }
