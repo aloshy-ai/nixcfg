@@ -8,7 +8,6 @@
   },
   "shell": {
     "init_hook": [
-      "clear",
       "curl -fsSL https://ascii.aloshy.ai | sh",
       "devbox run --list"
     ],
