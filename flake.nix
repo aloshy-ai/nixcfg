@@ -18,6 +18,12 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # System Deployment
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
@@ -47,6 +53,10 @@
         };
       };
     in lib.mkFlake {
+      deploy = lib.mkDeploy { inherit (inputs) self; };
+      checks = builtins.mapAttrs (system: deploy-lib: deploy-lib.deployChecks inputs.self.deploy) inputs.deploy-rs.lib;
       outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
+    } // {
+      self = inputs.self;
     };
 }
