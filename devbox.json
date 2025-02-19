@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.7/.schema/devbox.schema.json",
+  "packages": [
+    "github:snowfallorg/flake"
+  ],
+  "env": {
+    "DIRENV_LOG_FORMAT": ""
+  },
+  "shell": {
+    "init_hook": [
+      "clear",
+      "curl -fsSL https://ascii.aloshy.ai | sh",
+      "devbox run --list"
+    ],
+    "scripts": {
+      "build-nixos": [
+        "nix build .#sd-aarch64Configurations.rpi4"
+      ]
+    }
+  }
+}

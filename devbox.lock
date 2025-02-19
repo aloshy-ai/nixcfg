@@ -1,0 +1,8 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "github:snowfallorg/flake": {
+      "resolved": "github:snowfallorg/flake/d3b1167f7265d28549930b95b98327c277ef8afd?lastModified=1716675632&narHash=sha256-AOgmoVZvMPUMSlHMrRjWaPykNS5YWxnUNp7STgfjGdA%3D"
+    }
+  }
+}
