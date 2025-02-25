@@ -17,33 +17,22 @@
   config,
   ...
 }: {
-  nix = {
-    package = pkgs.nix;
-    settings = {
-      substituters = ["https://nix-community.cachix.org" "https://cache.nixos.org"];
-      trusted-public-keys = ["cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="];
-      extra-nix-path = "nixpkgs=flake:nixpkgs";
-      trusted-users = ["root" "@admin" "@nixbld" "aloshy"];
-      extra-trusted-users = ["root" "@admin" "@nixbld" "aloshy"];
-      experimental-features = ["nix-command" "flakes"];
-      builders-use-substitutes = true;
-      keep-outputs = true;
-      keep-derivations = true;
-    };
+  # Bootstrap NixOS VM on macOS to build Linux systems
+  nix.linux-builder = {
+    enable = true;
+    maxJobs = 4;
 
-    gc = {
-      # user = "root";
-      automatic = true;
-      interval = {
-        Weekday = 0;
-        Hour = 2;
-        Minute = 0;
-      };
-      options = "--delete-older-than 30d";
-    };
+    systems = [
+      "aarch64-linux"
+      "x86_64-linux"
+    ];
 
-    extraOptions = ''
-      extra-platforms = x86_64-linux aarch64-linux
-    '';
+    supportedFeatures = [
+    ];
   };
+
+  # To let $USER to read `builder` SSH Key for NixOS VM
+  system.activationScripts.postUserActivation.text = ''
+    sudo chmod 600 /etc/nix/builder_ed25519
+  '';
 }

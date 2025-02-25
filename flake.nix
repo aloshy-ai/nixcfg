@@ -1,16 +1,11 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Snowfall Lib
     snowfall-lib = {
       url = "github:snowfallorg/lib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Snowfall Flake
-    flake = {
-      url = "github:snowfallorg/flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -116,7 +111,6 @@
       };
 
       overlays = with inputs; [
-        flake.overlays.default
         thaw.overlays.default
       ];
 
