@@ -17,15 +17,13 @@
   config,
   ...
 }: {
-  # Bootstrap NixOS VM on macOS to build Linux systems
+  Bootstrap NixOS VM on macOS to build Linux systems
   nix.linux-builder = {
     enable = true;
     maxJobs = 4;
 
-    systems = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
+    systems = ["x86_64-linux" "aarch64-linux"];
+    config.boot.binfmt.emulatedSystems = ["x86_64-linux"];
 
     supportedFeatures = [
     ];
