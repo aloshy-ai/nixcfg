@@ -97,15 +97,15 @@
 
         # Choose a namespace to use for your flake's packages, library,
         # and overlays.
-        namespace = "dynasty";
+        namespace = "nixcfg";
 
         # Add flake metadata that can be processed by tools like Snowfall Frost.
         meta = {
           # A slug to use in documentation when displaying things like file paths.
-          name = "dynasty";
+          name = "nixcfg";
 
           # A title to show for your flake, typically the name.
-          title = "aloshy.🅰🅸 | Nix Dynasty";
+          title = "aloshy.🅰🅸 | NixCfg";
         };
       };
     };
