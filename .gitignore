@@ -1,5 +1,8 @@
-result
+.DS_Store
 .devbox
 .direnv
 .env*
+!.envrc
+!.env.example
+result
 core
