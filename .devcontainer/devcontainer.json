@@ -1,40 +1,46 @@
 {
   "name": "Devbox Remote Container",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "image": "mcr.microsoft.com/devcontainers/base:alpine",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
   "workspaceFolder": "/workspace",
   "customizations": {
     "vscode": {
-      "settings": {},
+      "settings": {
+        "editor.fontSize": 14,
+        "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace",
+        "editor.fontLigatures": true,
+        "terminal.integrated.fontLigatures.enabled": true,
+        "files.autoSave": "afterDelay",
+        "workbench.colorTheme": "GitHub Dark",
+        "nixEnvSelector.nixFile": "${workspaceRoot}/shell.nix"
+      },
       "extensions": [
-        "fuadpashayev.bottom-terminal",
-        "ms-azuretools.vscode-docker",
-        "github.vscode-github-actions",
-        "SanjulaGanepola.github-local-actions",
-        "GitHub.vscode-pull-request-github",
-        "bbenoist.Nix",
-        "jetpack-io.devbox"
+          "zongou.vs-seti-jetbrainsmononerdfontmono",
+          "SanjulaGanepola.github-local-actions",
+          "ms-vscode-remote.remote-containers",
+          "GitHub.vscode-pull-request-github",
+          "github.vscode-github-actions",
+          "arrterian.nix-env-selector",
+          "fuadpashayev.bottom-terminal",
+          "ms-azuretools.vscode-docker",
+          "github.github-vscode-theme",
+          "kamadorueda.alejandra",
+          "jnoortheen.nix-ide",
+          "fsevenm.run-it-on",
+          "jetpack-io.devbox",
+          "github.remotehub",
+          "github.copilot",
+          "bbenoist.Nix",
+          "mkhl.direnv"
       ]
     }
   },
   "features": {
-    "ghcr.io/joshuanianji/devcontainer-features/github-cli-persistence:1": {},
-    "ghcr.io/ChristopherMacGown/devcontainer-features/direnv:1": {},
-    "ghcr.io/devcontainers-extra/features/vscode-server:1": {},
-    "ghcr.io/devcontainers-extra/features/vscode-cli:1": {},
-    "ghcr.io/schlich/devcontainer-features/starship:0": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers-community/features/direnv": {},
     "ghcr.io/devcontainers/features/nix:1": {
-      "extraNixConfig": [
-        "experimental-features = nix-command flakes",
-        "extra-platforms = x86_64-linux aarch64-linux"
-      ],
-      "packages": [
-        "devbox"
-      ]
+      "flakeUri": "github:jetify-com/devbox"
     }
   },
-  "onCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
   "postCreateCommand": "devbox shellenv --init-hook >> ~/.profile",
   "postStartCommand": "direnv allow"
 }
