@@ -1,5 +1,5 @@
 {
-  "name": "Devbox Remote Container",
+  "name": "aloshy.🅰🅸 | Nix Devbox",
   "image": "mcr.microsoft.com/devcontainers/base:alpine",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
   "workspaceFolder": "/workspace",
@@ -32,8 +32,7 @@
           "jetpack-io.devbox",
           "github.remotehub",
           "github.copilot",
-          "bbenoist.Nix",
-          "mkhl.direnv"
+          "bbenoist.Nix"
       ]
     }
   },
