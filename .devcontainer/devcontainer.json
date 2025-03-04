@@ -36,8 +36,5 @@
           "mkhl.direnv"
       ]
     }
-  },
-  "features": {
-    "ghcr.io/ChristopherMacGown/devcontainer-features/direnv:1": {}
   }
 }
